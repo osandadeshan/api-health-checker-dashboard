@@ -1,0 +1,20 @@
+{
+  "name": "api-health-checker-dashboard",
+  "version": "1.0.0",
+  "description": "This is a node application to check the availability of the backend service components.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "Osanda Nimalarathna",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  },
+  "dependencies": {
+    "axios": "^0.20.0",
+    "express": "^4.17.1"
+  }
+}
