@@ -18,7 +18,8 @@ This is project can be used for that purpose.
 6. Change the "***healthCheckEndpoints***" object in ***line number 9***, with your backend services' id and url
 7. Save the changes
 8. Open the terminal in VSCode
-9. Execute this command `***npm run dev***`
-10. Open the web application from http://localhost:5000
+9. Execute `***npm install***` to install the node modules
+10. Execute `***npm run dev***` to start the node application
+11. Open the web application from http://localhost:5000
 
 **Note: You won't be facing [CORS issue.](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) Because this application has a proxy layer to solve that issue. You can deploy this application as a node application**
