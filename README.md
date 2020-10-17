@@ -6,7 +6,7 @@ This project can be used for that purpose.
 
 > A sample dashboard.
 
-![](https://github.com/osandadeshan/api-health-checker/blob/master/dashboard-screenshot.PNG)
+![](https://github.com/osandadeshan/api-health-checker-dashboard/blob/master/dashboard-screenshot.PNG)
 
 ## How to use?
 **Pre-requisites:**
