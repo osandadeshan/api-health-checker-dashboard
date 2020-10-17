@@ -2,7 +2,7 @@
 
 ## Introduction
 When we are working on a real project it is vital to have dashboard where we can find the availability of the backend services integrated with that project.
-This is project can be used for that purpose.
+This project can be used for that purpose.
 
 ## How to use?
 **Pre-requisites:**
