@@ -4,6 +4,10 @@
 When we are working on a real project it is vital to have dashboard where we can find the availability of the backend services integrated with that project.
 This project can be used for that purpose.
 
+> A sample dashboard.
+
+![](https://github.com/osandadeshan/api-health-checker/blob/master/dashboard-screenshot.PNG)
+
 ## How to use?
 **Pre-requisites:**
 * [Node](https://nodejs.org/en/download/)
