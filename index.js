@@ -7,7 +7,7 @@ app.use(express.static("public"));
 
 // Project components' ids and urls object
 const healthCheckEndpoints = {
-  mockServer: "https://maxsoft-mock-server-demo.web.app/say/hello?name=Osanda",
+  mockServer: "http://localhost:8000/",
   user: "https://maxsoft-mock-server-demo.web.app/users/1",
   career: "https://maxsoft-mock-server-demo.web.app/careers",
   document: "https://maxsoft-mock-server-demo.web.app/photos/29647",
