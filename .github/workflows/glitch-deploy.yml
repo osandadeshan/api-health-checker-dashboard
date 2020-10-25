@@ -11,7 +11,7 @@ jobs:
       env:
         SOURCE_REPO: "https://github.com/osandadeshan/api-health-checker-dashboard.git"
         SOURCE_BRANCH: "master"
-        DESTINATION_REPO: https://65465bad-7748-4d0d-a9c0-ae0239bc7021@api.glitch.com/git/osandadeshan-api-health-checker-dashboard
+        DESTINATION_REPO: ${{ secrets.glitch_git_URL }}
         DESTINATION_BRANCH: "master"
       with:
         args: $SOURCE_REPO $SOURCE_BRANCH $DESTINATION_REPO $DESTINATION_BRANCH
