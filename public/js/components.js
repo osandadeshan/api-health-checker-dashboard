@@ -16,6 +16,11 @@ const generateServiceTiles = () => {
       id: "user"
     },
     {
+      name: "Photos Management",
+      description: "This service will be using to view, create, edit, and delete a photo.",
+      id: "photos"
+    },
+    {
       name: "Careers Management",
       description: "This service will be using for all the career management functions.",
       id: "career"
@@ -26,9 +31,29 @@ const generateServiceTiles = () => {
       id: "document"
     },
     {
+      name: "Album Management",
+      description: "This service will be using for all the album management functions.",
+      id: "album"
+    },
+    {
       name: "Barcode Management",
       description: "This service will be using for all the barcode management functions.",
       id: "barcode"
+    },
+    {
+      name: "Employee Management",
+      description: "This service will be using for all the employee management functions.",
+      id: "employee"
+    },
+    {
+      name: "ToDo Management",
+      description: "This service will be using for all the todo management functions.",
+      id: "todo"
+    },
+    {
+      name: "Posts Management",
+      description: "This service will be using for all the posts management functions.",
+      id: "posts"
     }
   ];
 

@@ -9,9 +9,14 @@ app.use(express.static("public"));
 const healthCheckEndpoints = {
   mockServer: "http://localhost:8000/",
   user: "https://maxsoft-mock-server-demo.web.app/users/1",
+  photos: "https://jsonplaceholder.typicode.com/photos",
   career: "https://maxsoft-mock-server-demo.web.app/careers",
   document: "https://maxsoft-mock-server-demo.web.app/photos/29647",
-  barcode: "https://maxsoft-mock-server-demo.com/barcode"
+  album: "https://jsonplaceholder.typicode.com/albums",
+  barcode: "https://maxsoft-mock-server-demo.com/barcode",
+  employee: "http://dummy.restapiexample.com/api/v1/employees",
+  todo: "https://jsonplaceholder.typicode.com/todos/1",
+  posts: "https://jsonplaceholder.typicode.com/posts",
 };
 
 // Hosted at http://localhost:5000
