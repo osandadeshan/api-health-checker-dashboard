@@ -8,6 +8,14 @@ This project can be used for that purpose.
 
 ![](https://github.com/osandadeshan/api-health-checker-dashboard/blob/master/dashboard-screenshot.PNG)
 
+## Advantages
+* Easy to find unavailable backend services
+* No need to worry about the CORS issue
+* Real-time updating the services statues in 5 seconds interval
+* Easy to integrate services to see the health
+* Both Web and Mobile friendly UI
+* Free and open-source
+
 ## How to use?
 **Pre-requisites:**
 * [Node](https://nodejs.org/en/download/)
