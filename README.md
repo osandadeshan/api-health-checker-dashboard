@@ -42,4 +42,4 @@ This project can be used for that purpose.
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/License_icon-mit-2.svg/2000px-License_icon-mit-2.svg.png" alt="MIT License" width="100" height="100"/> [API Health Checker Dashboard](https://github.com/osandadeshan/api-health-checker-dashboard) is released under [MIT License](https://opensource.org/licenses/MIT)
 
 ## Copyright
-Copyright 2020 MaxSoft.
+Copyright 2020 [MaxSoft](https://maxsoftlk.github.io/).
