@@ -11,7 +11,7 @@ This project can be used for that purpose.
 ## Advantages
 * Easy to find unavailable backend services
 * No need to worry about the CORS issue
-* Real-time updating the services statues in 5 seconds interval
+* Real-time updating the services statues in every 30 seconds
 * Easy to integrate services to see the health
 * Both Web and Mobile friendly UI
 * Free and open-source
