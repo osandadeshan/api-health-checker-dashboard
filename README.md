@@ -36,7 +36,7 @@ This project can be used for that purpose.
 
 **Note: You won't be facing [CORS issue.](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) Because this application has a proxy layer to solve that issue. You can deploy this application as a node application.**
 
-**Sample dashboard deployed: https://api-health-checker-dashboard.herokuapp.com/**
+**Sample dashboard deployed: https://api-health-checker-dashboard.herokuapp.com**
 
 ## License
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/License_icon-mit-2.svg/2000px-License_icon-mit-2.svg.png" alt="MIT License" width="100" height="100"/> [API Health Checker Dashboard](https://github.com/osandadeshan/api-health-checker-dashboard) is released under [MIT License](https://opensource.org/licenses/MIT)
