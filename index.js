@@ -50,5 +50,4 @@ app.get("/:id", function (req, res) {
 
 // Application running port is 5000
 console.log("API Health Checker running at: http://localhost:5000");
-
-app.listen(30000);
+app.listen(process.env.PORT || 5000);
