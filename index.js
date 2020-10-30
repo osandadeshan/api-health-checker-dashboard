@@ -1,39 +1,60 @@
-var express = require("express");
-var app = express();
-var path = require("path");
-var axios = require("axios");
+const express = require("express");
+const app = express();
+const path = require("path");
+const axios = require("axios");
+require('log-timestamp');
+const Validator = require('jsonschema').Validator;
+const v = new Validator();
 
 app.use(express.static("public"));
 
 // Project components' ids and urls object
-const healthCheckEndpoints = {
-  mockServer: "http://localhost:8000/",
-  user: "https://maxsoft-mock-server-demo.web.app/users/1",
-  photos: "https://jsonplaceholder.typicode.com/photos",
-  career: "https://maxsoft-mock-server-demo.web.app/careers",
-  document: "https://maxsoft-mock-server-demo.web.app/photos/29647",
-  album: "https://jsonplaceholder.typicode.com/albums",
-  barcode: "https://maxsoft-mock-server-demo.com/barcode",
-  employee: "http://dummy.restapiexample.com/api/v1/employees",
-  todo: "https://jsonplaceholder.typicode.com/todos/1",
-  posts: "https://jsonplaceholder.typicode.com/posts",
+const healthEndpointsSchema = {
+  id: "healthEndpointsSchema",
+  type: "array",
+  items: {
+    properties: {
+      name: {type: "string"},
+      description: {type: "string"},
+      id: {type: "string"},
+      url: {type: "string"}
+    },
+    required: ["name", "description", "id", "url"]
+  }
 };
+
+const healthCheckEndpoints = require("./config/config.json");
 
 // Hosted at http://localhost:5000
 app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname + "/public/index.html"));
 });
 
+app.get("/config", function (req, res) {
+  if (v.validate(healthEndpointsSchema, healthCheckEndpoints).valid) {
+      console.log("validated config data");
+      res.json(healthCheckEndpoints.map((endpoint) => ({
+          name: endpoint.name,
+          description: endpoint.description,
+          id: endpoint.id
+      })));
+  } else {
+      res.status(500).end("Failed to validate config data");
+  }
+});
+
 app.get("/:id", function (req, res) {
   const id = req.params.id;
   console.log("Health check request received for " + id);
-  if (!healthCheckEndpoints[id]) {
+  const healthCheckEndpoint = healthCheckEndpoints.find((endPoint) => endPoint.id === id);
+  const requestUrl = healthCheckEndpoint.url || null;
+  if (!requestUrl) {
     console.error("Health check endpoint is not available");
     res.status(404).end();
   } else {
-    console.log("Performing health check to " + healthCheckEndpoints[id]);
+    console.log("Performing health check to " + requestUrl);
     axios
-      .get(healthCheckEndpoints[id])
+      .get(requestUrl)
       .then((response) => {
         console.log(`Health check request for ${id} success`);
         res.status(200).end();

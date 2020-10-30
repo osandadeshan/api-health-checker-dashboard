@@ -1,61 +1,19 @@
 const serviceCurrentStatus = {};
+let services = [];
+
+(() => {
+    fetch("/config", ).then(async(response) => {
+       services = await response.json();
+       generateServiceTiles();
+       setInterval(generateServiceTiles, 5000);
+    }).catch((e) => {
+       console.error(e);
+       window.alert("Failed to retrieve configuration data. Please verify configurations");
+    });
+})();
 
 const generateServiceTiles = () => {
   const container = document.getElementById("health-boxes");
-
-  // Project components' name, description and id object array
-  const services = [
-    {
-      name: "Mock Server",
-      description: "This service will be using for all the mock server functions.",
-      id: "mockServer"
-    },
-    {
-      name: "User Management",
-      description: "This service will be using to view, create, edit, and delete a user.",
-      id: "user"
-    },
-    {
-      name: "Photos Management",
-      description: "This service will be using to view, create, edit, and delete a photo.",
-      id: "photos"
-    },
-    {
-      name: "Careers Management",
-      description: "This service will be using for all the career management functions.",
-      id: "career"
-    },
-    {
-      name: "Document Management",
-      description: "This service will be using for all the document management functions.",
-      id: "document"
-    },
-    {
-      name: "Album Management",
-      description: "This service will be using for all the album management functions.",
-      id: "album"
-    },
-    {
-      name: "Barcode Management",
-      description: "This service will be using for all the barcode management functions.",
-      id: "barcode"
-    },
-    {
-      name: "Employee Management",
-      description: "This service will be using for all the employee management functions.",
-      id: "employee"
-    },
-    {
-      name: "ToDo Management",
-      description: "This service will be using for all the todo management functions.",
-      id: "todo"
-    },
-    {
-      name: "Posts Management",
-      description: "This service will be using for all the posts management functions.",
-      id: "posts"
-    }
-  ];
 
   // Looping through the api endpoints and get the status
   services.forEach((service) => {
@@ -100,10 +58,10 @@ const generateServiceTiles = () => {
         "mb-5",
         "mb-lg-0"
       );
-      
+
       el.setAttribute("data-aos", "zoom-in");
       el.setAttribute("data-aos-delay", "zoom-in200");
-  
+
       container.appendChild(el).innerHTML = `
       <div class="icon-box" id="tile_${elementId}" style="margin-bottom:15px; ${tileBackgroundColor}">
           <div class="icon" id="icon_${elementId}" style="${iconStyle}"><i class="ri-stack-line"></i></div>
@@ -113,10 +71,7 @@ const generateServiceTiles = () => {
       </div>
       `;
     }
-    
+
   }
 }
 
-generateServiceTiles();
-
-setInterval(generateServiceTiles, 5000);
