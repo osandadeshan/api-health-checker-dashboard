@@ -65,7 +65,7 @@ const generateServiceTiles = () => {
               <label id="chip_label_${elementId}">${chipLabel}</label>
             </div>
           </div>
-          <h4 class="title"><a href="" id="title_${elementId}">${name}</a></h4>
+          <h4 class="title"><a href="#" id="title_${elementId}">${name}</a></h4>
           <p class="description" id="response_code_${elementId}"><b>Response code: ${status}</b></p>
           <p class="description" id="description_${elementId}">${description}</p>
       </div>
