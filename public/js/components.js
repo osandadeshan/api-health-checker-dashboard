@@ -1,14 +1,15 @@
 const serviceCurrentStatus = {};
 let services = [];
+const pollingInterval = 30;
 
 (() => {
   fetch("/config", ).then(async (response) => {
     services = await response.json();
     generateServiceTiles();
-    setInterval(generateServiceTiles, 5000);
+    setInterval(generateServiceTiles, pollingInterval * 1000);
   }).catch((e) => {
     console.error(e);
-    window.alert("Failed to retrieve backend-service data. Please check config.json file.");
+    window.alert("Failed to retrieve backend-service data. Please check './config/config.json' file.");
   });
 })();
 
@@ -71,6 +72,5 @@ const generateServiceTiles = () => {
       </div>
       `;
     }
-
   }
 }

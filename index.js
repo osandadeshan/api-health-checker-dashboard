@@ -25,21 +25,21 @@ const healthEndpointsSchema = {
 
 const healthCheckEndpoints = require("./config/config.json");
 
-// Hosted at http://localhost:5000
 app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname + "/public/index.html"));
 });
 
 app.get("/config", function (req, res) {
   if (v.validate(healthEndpointsSchema, healthCheckEndpoints).valid) {
-      console.log("validated config data");
+      console.log("JSON schema validation success for './config/config.json'");
       res.json(healthCheckEndpoints.map((endpoint) => ({
           name: endpoint.name,
           description: endpoint.description,
           id: endpoint.id
       })));
   } else {
-      res.status(500).end("Failed to validate config data");
+      res.status(500).end(`JSON schema validation failed for './config/config.json'.
+      Sample config.json file can be found here: 'https://github.com/osandadeshan/api-health-checker-dashboard/blob/master/config/config.json'`);
   }
 });
 
@@ -60,10 +60,7 @@ app.get("/:id", function (req, res) {
         res.status(200).end();
       })
       .catch((e) => {
-        console.error(
-          `Health check request failed for ${id} with error`,
-          e.toJSON()
-        );
+        console.error(`Health check request failed for ${id} with error`, e.toJSON());
         res.status(e && e.response ? e.response.status : 500).end();
       });
   }
