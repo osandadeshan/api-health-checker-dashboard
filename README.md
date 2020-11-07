@@ -10,7 +10,7 @@ This project can be used for that purpose.
 
 ## Advantages
 * Easy to find unavailable backend services
-* No need to worry about the CORS issue
+* No need to worry about the [CORS issue](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
 * Real-time updating the services status in every 30 seconds
 * Easy to integrate services to see the health
 * Both Web and Mobile friendly UI
