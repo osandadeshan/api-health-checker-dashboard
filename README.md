@@ -45,6 +45,7 @@ This project can be used for that purpose.
 
 ## Deployment
 You can deploy this as a sample node application.
+
 **Sample dashboard deployed: https://api-health-checker-dashboard.herokuapp.com**
 
 ## License
