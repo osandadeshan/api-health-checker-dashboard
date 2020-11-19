@@ -4,17 +4,21 @@
 When we are working on a real project it is vital to have dashboard where we can find the availability of the backend services integrated with that project.
 This project can be used for that purpose.
 
-> A sample dashboard.
-
 ![](https://github.com/osandadeshan/api-health-checker-dashboard/blob/master/dashboard-screenshot.PNG)
 
 ## Advantages
 * Easy to find unavailable backend services
+* Real-time updating the services status in every “x” seconds (“x” can be configured. By default “x” is 30 seconds)
+* Easy to integrate services
 * No need to worry about the [CORS issue](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
-* Real-time updating the services status in every 30 seconds
-* Easy to integrate services to see the health
 * Both Web and Mobile friendly UI
 * Free and open-source
+
+## Architecture
+![](https://github.com/osandadeshan/api-health-checker-dashboard/blob/master/design-diagram.PNG)
+
+## API Health Checker Dashboard Vs Dynatrace Dashboard
+https://airtable.com/shroCtTc1tjhFiWwJ
 
 ## How to use?
 **Pre-requisites:**
@@ -34,6 +38,8 @@ This project can be used for that purpose.
 
 **Note: You won't be facing [CORS issue.](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) Because this application has a proxy layer to solve that issue. You can deploy this application as a node application.**
 
+## Deployment
+You can deploy this as a sample node application.
 **Sample dashboard deployed: https://api-health-checker-dashboard.herokuapp.com**
 
 ## License
