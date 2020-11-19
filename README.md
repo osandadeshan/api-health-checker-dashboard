@@ -18,7 +18,12 @@ This project can be used for that purpose.
 ![](https://github.com/osandadeshan/api-health-checker-dashboard/blob/master/design-diagram.PNG)
 
 ## API Health Checker Dashboard Vs Dynatrace Dashboard
-https://airtable.com/shroCtTc1tjhFiWwJ
+| Criteria | API Health Checker Dashboard | Dynatrace Dashboard |
+| ------------ | ------------ | ------------ |
+| Real-time monitoring | Yes | Minimum interval is 5 minutes |
+| Historical view | Not yet implemented | Yes |
+| Integrating backend services | Only need to update in a single file | Need to create HTTP monitors per service and add it to the dashboard |
+| Cost | Free and open-source | Paid tool |
 
 ## How to use?
 **Pre-requisites:**
