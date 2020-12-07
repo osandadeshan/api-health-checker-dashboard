@@ -81,6 +81,7 @@ h1, h2, h3, h4, h5, h6 {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -90,6 +91,7 @@ h1, h2, h3, h4, h5, h6 {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -185,30 +187,13 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 22px;
 }
 
-#hero .btn-get-started {
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  letter-spacing: 0.5px;
-  display: inline-block;
-  padding: 14px 50px;
-  border-radius: 5px;
-  transition: 0.5s;
-  margin-top: 30px;
-  color: #fff;
-  background: #2487ce;
-}
-
-#hero .btn-get-started:hover {
-  background: #3194db;
-}
-
 #hero .icon-boxes {
   margin-top: 100px;
 }
 
+
 #hero .icon-box {
-  padding: 50px 30px;
+  padding: 20px 30px 50px 30px;
   position: relative;
   overflow: hidden;
   background: #fff;
@@ -216,6 +201,25 @@ h1, h2, h3, h4, h5, h6 {
   transition: all 0.3s ease-in-out;
   border-radius: 8px;
   z-index: 1;
+  margin-bottom: 15px;
+}
+
+#hero .icon-box .chip {
+  display: flex;
+  /*background: #ef5c5c;*/
+  align-items: center;
+  justify-content: center;
+  padding: 10px 10px;
+  border-radius: 20px;
+  width: 100px;
+  height: 30px;
+  margin-top: 10px;
+}
+
+#hero .icon-box .chip label {
+  color: #fafafa;
+  font-size: 12px;
+  margin: 0
 }
 
 #hero .icon-box .title {
@@ -243,6 +247,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 36px;
   line-height: 1;
   color: #2487ce;
+  flex: 1;
 }
 
 #hero .icon-box:hover {
@@ -259,14 +264,17 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-@media (max-width: 992px), (max-height: 500) {
+@media (max-width: 992px),
+(max-height: 500) {
   #hero {
     height: auto;
   }
+
   #hero h1 {
     font-size: 28px;
     line-height: 36px;
   }
+
   #hero h2 {
     font-size: 18px;
     line-height: 24px;

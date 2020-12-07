@@ -1,15 +1,16 @@
 const serviceCurrentStatus = {};
 let services = [];
+const pollingInterval = 30;
 
 (() => {
-    fetch("/config", ).then(async(response) => {
-       services = await response.json();
-       generateServiceTiles();
-       setInterval(generateServiceTiles, 5000);
-    }).catch((e) => {
-       console.error(e);
-       window.alert("Failed to retrieve configuration data. Please verify configurations");
-    });
+  fetch("/config", ).then(async (response) => {
+    services = await response.json();
+    generateServiceTiles();
+    setInterval(generateServiceTiles, pollingInterval * 1000);
+  }).catch((e) => {
+    console.error(e);
+    window.alert("Failed to retrieve backend-service data. Please check './config/config.json' file.");
+  });
 })();
 
 const generateServiceTiles = () => {
@@ -22,7 +23,7 @@ const generateServiceTiles = () => {
         "Access-Control-Allow-Origin": "*",
       },
     }).then((res) => {
-      if(!serviceCurrentStatus[service.id] || serviceCurrentStatus[service.id] !== res.status) {
+      if (!serviceCurrentStatus[service.id] || serviceCurrentStatus[service.id] !== res.status) {
         appendElements(service, res.status);
         serviceCurrentStatus[service.id] = res.status;
       }
@@ -33,19 +34,12 @@ const generateServiceTiles = () => {
     const elementId = `component_${id}`;
     const currentElement = document.getElementById(elementId);
 
-    const tileBackgroundColor = status !== 200 ? "background-color:#ef5c5c;" : "";
-    const iconStyle = status !== 200 ? "color:#fff;" : "color:#2487ce;";
-    const titleStyle = status !== 200 ? "color:#fff;" : "color:#124265;";
-    const responseCodeStyle = status !== 200 ? "color:#fff;" : "color:#124265;";
-    const descriptionStyle = status !== 200 ? "color:#fff;" : "color:#124265;";
+    const chipStyle = status !== 200 ? "background-color:#ef5c5c;" : "background-color:#66bb6a;";
+    const chipLabel = status !== 200 ? "Not Available" : "Available";
 
     if (currentElement) {
-      document.getElementById(`tile_${elementId}`).style = tileBackgroundColor;
-      document.getElementById(`icon_${elementId}`).style = iconStyle;
-      document.getElementById(`title_${elementId}`).style = titleStyle;
-      document.getElementById(`response_code_${elementId}`).style = responseCodeStyle;
-      document.getElementById(`description_${elementId}`).style = descriptionStyle;
-
+      document.getElementById(`chip_${elementId}`).style = chipStyle;
+      document.getElementById(`chip_label_${elementId}`).innerHTML = `${chipLabel}`;
       document.getElementById(`response_code_${elementId}`).innerHTML = `<b>Response code: ${status}</b>`;
     } else {
       const el = document.createElement("div");
@@ -63,15 +57,20 @@ const generateServiceTiles = () => {
       el.setAttribute("data-aos-delay", "zoom-in200");
 
       container.appendChild(el).innerHTML = `
-      <div class="icon-box" id="tile_${elementId}" style="margin-bottom:15px; ${tileBackgroundColor}">
-          <div class="icon" id="icon_${elementId}" style="${iconStyle}"><i class="ri-stack-line"></i></div>
-          <h4 class="title"><a href="" id="title_${elementId}" style="${titleStyle}">${name}</a></h4>
-          <p class="description" id="response_code_${elementId}"style="${responseCodeStyle}"><b>Response code: ${status}</b></p>
-          <p class="description" id="description_${elementId}"style="${descriptionStyle}">${description}</p>
+      <div class="icon-box">
+            <div class="d-flex">
+              <div class="icon" id="icon_${elementId}">
+              <i class="ri-stack-line"></i>
+            </div>
+            <div class="chip" id="chip_${elementId}" style="${chipStyle}">
+              <label id="chip_label_${elementId}">${chipLabel}</label>
+            </div>
+          </div>
+          <h4 class="title"><a href="#" id="title_${elementId}">${name}</a></h4>
+          <p class="description" id="response_code_${elementId}"><b>Response code: ${status}</b></p>
+          <p class="description" id="description_${elementId}">${description}</p>
       </div>
       `;
     }
-
   }
 }
-
