@@ -1,7 +1,7 @@
 # API Health Checker Dashboard
 
 ## Introduction
-When we are working on a real project it is vital to have dashboard where we can find the availability of the backend services integrated with that project.
+When we are working on a real project it is vital to have a dashboard where we can find the availability of the backend services integrated with that project.
 This project can be used for that purpose.
 
 ![](https://github.com/osandadeshan/api-health-checker-dashboard/blob/master/dashboard-screenshot.PNG)
