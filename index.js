@@ -17,9 +17,11 @@ const healthEndpointsSchema = {
       name: {type: "string"},
       description: {type: "string"},
       id: {type: "string"},
-      url: {type: "string"}
+      environment: {type: "string"},
+      url: {type: "string"},
+      contact: {type: "string"}
     },
-    required: ["name", "description", "id", "url"]
+    required: ["name", "description", "id", "environment", "url", "contact"]
   }
 };
 
@@ -35,7 +37,10 @@ app.get("/config", function (req, res) {
       res.json(healthCheckEndpoints.map((endpoint) => ({
           name: endpoint.name,
           description: endpoint.description,
-          id: endpoint.id
+          id: endpoint.id,
+          environment: endpoint.environment,
+          url: endpoint.url,
+          contact: endpoint.contact
       })));
   } else {
       res.status(500).end(`JSON schema validation failed for './config/config.json'.
