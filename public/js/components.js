@@ -25,24 +25,24 @@ const generateServiceTiles = () => {
       },
     }).then((res) => {
       if (!serviceCurrentStatus[service.id] || serviceCurrentStatus[service.id] !== res.status) {
-        appendElements(service, res);
+        appendElements(service, res.status);
         serviceCurrentStatus[service.id] = res.status;
       }
     });
   });
 
-  function appendElements({id, name, description}, {status, url}) {
+  function appendElements({id, name, description, environment, url, contact}, statusCode) {
     const elementId = `component_${id}`;
     const currentElement = document.getElementById(elementId);
 
-    const chipStyle = status !== 200 ? "background-color:#ef5c5c;" : "background-color:#66bb6a;";
-    const chipLabel = status !== 200 ? "Not Available" : "Available";
-    const modalStyle = status !== 200 ? "color:#ef5c5c;" : "color:#66bb6a;";
+    const chipStyle = statusCode !== 200 ? "background-color:#ef5c5c;" : "background-color:#66bb6a;";
+    const chipLabel = statusCode !== 200 ? "Not Available" : "Available";
+    const env = environment.toUpperCase();
 
     if (currentElement) {
       document.getElementById(`chip_${elementId}`).style = chipStyle;
       document.getElementById(`chip_label_${elementId}`).innerHTML = `${chipLabel}`;
-      document.getElementById(`response_code_${elementId}`).innerHTML = `<b>Response code: ${status}</b>`;
+      document.getElementById(`response_code_${elementId}`).innerHTML = `<b>Response code: ${statusCode}</b>`;
     } else {
       const el = document.createElement("div");
       el.setAttribute("id", elementId);
@@ -69,8 +69,8 @@ const generateServiceTiles = () => {
               <label id="chip_label_${elementId}">${chipLabel}</label>
             </div>
           </div>
-          <h4 class="title"><a href="#" id="title_${elementId}">${name}</a></h4>
-          <p class="description" id="response_code_${elementId}"><b>Response Code: ${status}</b></p>
+          <h4 class="title"><a id="title_${elementId}">${name}</a></h4>
+          <p class="description" id="response_code_${elementId}"><b>Response Code: ${statusCode}</b></p>
           <p class="description" id="description_${elementId}">${description}</p>
       </div>
       `;
@@ -78,10 +78,10 @@ const generateServiceTiles = () => {
       const p = document.createElement("div");
       p.innerHTML = `
       <div class="modal fade" id="modal_${elementId}" tabindex="-1" role="dialog" aria-labelledby="modal_${elementId}" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-dialog-centered" role="document" style="border-radius:100px!important;">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">${name} Health Info</h5>
+          <div class="modal-header" style="background-color:#f2f2f2;">
+            <h5 class="modal-title" id="exampleModalLabel">${name} Details</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -92,21 +92,21 @@ const generateServiceTiles = () => {
           </thead>
           <tbody class="table table-borderless">
               <tr>
-                  <td>URL</td>
-                  <td><b style="${modalStyle}">${url}</b></td>
+                  <td>Health URL</td>
+                  <td style="overflow-wrap:break-word; word-wrap:break-word; word-break:break-all;">${url}</td>
               </tr>
               <tr>
-                  <td>Response Code</td>
-                  <td><b style="${modalStyle}">${status}</b></td>
+                  <td>Environment</td>
+                  <td style="overflow-wrap:break-word; word-wrap:break-word; word-break:break-all;">${env}</td>
               </tr>
               <tr>
-                  <td>Status</td>
-                  <td><b style="${modalStyle}">${chipLabel}</b></td>
+                  <td>Contact Person/Team</td>
+                  <td style="overflow-wrap:break-word; word-wrap:break-word; word-break:break-all;"><a href="mailto:${contact}">${contact}</a></td>
               </tr>
           </tbody>
       </table>
           </div>
-          <div class="modal-footer">
+          <div class="modal-footer" style="background-color:#f2f2f2;">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           </div>
         </div>

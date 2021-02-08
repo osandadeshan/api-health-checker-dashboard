@@ -3,60 +3,80 @@
     "name": "Mock Server",
     "description": "This service will be using for all the mock server functions.",
     "id": "mockServer",
-    "url": "http://localhost:8000/"
+    "environment": "uat",
+    "url": "http://localhost:8000/",
+    "contact": "osanda@maxsoft.com"
   },
   {
     "name": "User Management",
     "description": "This service will be using to view, create, edit, and delete a user.",
     "id": "user",
-    "url": "https://maxsoft-mock-server-demo.web.app/users/1"
+    "environment": "uat",
+    "url": "https://maxsoft-mock-server-demo.web.app/users/1",
+    "contact": "osanda@maxsoft.com"
   },
   {
     "name": "Photos Management",
     "description": "This service will be using to view, create, edit, and delete a photo.",
     "id": "photos",
-    "url": "https://jsonplaceholder.typicode.com/photos"
+    "environment": "uat",
+    "url": "https://jsonplaceholder.typicode.com/photos",
+    "contact": "osanda@maxsoft.com"
   },
   {
     "name": "Careers Management",
     "description": "This service will be using for all the career management functions.",
     "id": "career",
-    "url": "https://maxsoft-mock-server-demo.web.app/careers"
+    "environment": "uat",
+    "url": "https://maxsoft-mock-server-demo.web.app/careers",
+    "contact": "osanda@maxsoft.com"
   },
   {
     "name": "Document Management",
     "description": "This service will be using for all the document management functions.",
     "id": "document",
-    "url": "https://maxsoft-mock-server-demo.web.app/photos/29647"
+    "environment": "uat",
+    "url": "https://maxsoft-mock-server-demo.web.app/photos/29647",
+    "contact": "osanda@maxsoft.com"
   },
   {
     "name": "Album Management",
     "description": "This service will be using for all the album management functions.",
     "id": "album",
-    "url": "https://jsonplaceholder.typicode.com/albums"
+    "environment": "uat",
+    "url": "https://jsonplaceholder.typicode.com/albums",
+    "contact": "osanda@maxsoft.com"
   },
   {
     "name": "Barcode Management",
     "description": "This service will be using for all the barcode management functions.",
     "id": "barcode",
-    "url": "https://maxsoft-mock-server-demo.com/barcode"
+    "environment": "uat",
+    "url": "https://maxsoft-mock-server-demo.com/barcode",
+    "contact": "osanda@maxsoft.com"
   },
   {
     "name": "Employee Management",
     "description": "This service will be using for all the employee management functions.",
     "id": "employee",
-    "url": "http://dummy.restapiexample.com/api/v1/employees"
+    "environment": "uat",
+    "url": "http://dummy.restapiexample.com/api/v1/employees",
+    "contact": "osanda@maxsoft.com"
   },
   {
     "name": "ToDo Management",
     "description": "This service will be using for all the todo management functions.",
     "id": "todo",
-    "url": "https://jsonplaceholder.typicode.com/todos/1"
+    "environment": "uat",
+    "url": "https://jsonplaceholder.typicode.com/todos/1",
+    "contact": "osanda@maxsoft.com"
   },
   {
     "name": "Posts Management",
     "description": "This service will be using for all the posts management functions.",
     "id": "posts",
-    "url": "https://jsonplaceholder.typicode.com/posts"
+    "environment": "uat",
+    "url": "https://jsonplaceholder.typicode.com/posts",
+    "contact": "osanda@maxsoft.com"
   }
 ]
