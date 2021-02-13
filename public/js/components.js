@@ -4,7 +4,7 @@ const pollingInterval = 30;
 
 // Read config.json and create health tiles
 (() => {
-  fetch("/config", ).then(async (response) => {
+  fetch("/config" + window.location.search, ).then(async (response) => {
     services = await response.json();
     generateServiceTiles();
     setInterval(generateServiceTiles, pollingInterval * 1000);
