@@ -1,0 +1,10 @@
+[
+  {
+    "name": "User Management",
+    "description": "This service will be using to view, create, edit, and delete a user.",
+    "id": "user",
+    "environment": "uat",
+    "url": "https://maxsoft-mock-server-demo.web.app/users/1",
+    "contact": "osanda@maxsoft.com"
+  }
+]

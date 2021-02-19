@@ -10,7 +10,9 @@
   <meta content="" name="keywords">
   <link rel="icon" type="image/png" href="img/favicon.png">
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -34,29 +36,42 @@
   </header>
   <!-- End Header -->
 
-<main>
-  <!-- ======= Project Service Components Section ======= -->
-  <section id="hero" class="d-flex align-items-center">
-    <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
-      <div class="row justify-content-center">
-        <div class="col-xl-7 col-lg-9 text-center">
-          <h1>API Health Checker</h1>
-          <h2>Real time health check dashboard for your backend services.</h2>
+  <main>
+    <!-- ======= Project Service Components Section ======= -->
+    <section id="hero" class="d-flex align-items-center">
+      <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+        <div class="row justify-content-center">
+          <div class="col-xl-7 col-lg-9 text-center">
+            <h1>API Health Checker</h1>
+            <h2>Real time health check dashboard for your backend services.</h2>
+          </div>
+        </div>
+
+        <select id="envDropdown" onchange="selectEnv()">
+          <option value="dev">DEV</option>
+          <option value="qa">QA</option>
+          <option value="uat">UAT</option>
+          <option value="sit">SIT</option>
+          <option value="perf">PERF</option>
+          <option value="pre_prod">PRE-PROD</option>
+          <option value="prod">PROD</option>
+          <option value="default" selected="selected">DEFAULT</option>
+        </select>
+
+        <div id="health-boxes" class="row icon-boxes">
         </div>
       </div>
-      <div id="health-boxes" class="row icon-boxes">
-      </div>
-    </div>
-  </section>
-  <!-- End Project Service Components Section -->
-</main>
-<!-- End #main -->
+    </section>
+    <!-- End Project Service Components Section -->
+  </main>
+  <!-- End #main -->
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <span><a href="https://maxsoftlk.github.io/" target="_blank"><strong>MaxSoft</strong></a></span>. All Rights Reserved.
+        &copy; Copyright <span><a href="https://maxsoftlk.github.io/"
+            target="_blank"><strong>MaxSoft</strong></a></span>. All Rights Reserved.
       </div>
       <div class="credits">
         Designed by <a href="https://osandadeshan.github.com/" target="_blank">Osanda Deshan Nimalarathna</a>.
@@ -81,6 +96,17 @@
 
   <script src="js/components.js"></script>
 
+  <script>
+    window['selectedEnv'] = '';
+  </script>
+  <script>
+    function selectEnv() {
+      var element = document.getElementById("envDropdown");
+      var environment = element.options[element.selectedIndex].value;
+      setSelectedEnvironment(environment);
+    }
+  </script>
+  
   <!-- Template Main JS File -->
   <script src="js/main.js"></script>
 </body>

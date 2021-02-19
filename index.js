@@ -25,7 +25,7 @@ const healthEndpointsSchema = {
   }
 };
 
-const healthCheckEndpoints = require("./config/config.json");
+let healthCheckEndpoints = require("./config/default_config.json");
 
 app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname + "/public/index.html"));
@@ -46,6 +46,38 @@ app.get("/config", function (req, res) {
       res.status(500).end(`JSON schema validation failed for './config/config.json'.
       Sample config.json file can be found here: 'https://github.com/osandadeshan/api-health-checker-dashboard/blob/master/config/config.json'`);
   }
+});
+
+app.post("/env/:env", function (req, res) {
+  healthCheckEndpoints = "";
+  switch (req.params.env) {
+    case 'dev':
+      healthCheckEndpoints = require("./config/dev_config.json");
+      break;
+    case 'qa':
+      healthCheckEndpoints = require("./config/qa_config.json");
+      break;
+    case 'uat':
+      healthCheckEndpoints = require("./config/uat_config.json");
+      break;
+    case 'sit':
+      healthCheckEndpoints = require("./config/sit_config.json");
+      break;
+    case 'pre-prod':
+      healthCheckEndpoints = require("./config/pre_prod_config.json");
+      break;
+    case 'prod':
+      healthCheckEndpoints = require("./config/prod_config.json");
+      break;
+    case 'prod':
+      healthCheckEndpoints = require("./config/default_config.json");
+      break;
+    default:
+      healthCheckEndpoints = "[]";
+      //healthCheckEndpoints = require("./config/empty_config.json");
+      break;
+  }
+  res.sendStatus(200);
 });
 
 app.get("/:id", function (req, res) {

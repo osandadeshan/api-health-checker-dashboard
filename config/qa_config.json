@@ -1,0 +1,10 @@
+[
+  {
+    "name": "Mock Server",
+    "description": "This service will be using for all the mock server functions.",
+    "id": "mockServer",
+    "environment": "uat",
+    "url": "http://localhost:8000/",
+    "contact": "osanda@maxsoft.com"
+  }
+]
