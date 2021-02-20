@@ -33,6 +33,9 @@ const generateServiceTiles = () => {
 }
 
 const setSelectedEnvironment = (env) => {
+  setTimeout(() => {
+    console.log("Waiting for selected environment");
+  }, 1000);
   fetch('/env/' + env, {
     method: 'POST',
     headers: {
@@ -48,7 +51,7 @@ const setSelectedEnvironment = (env) => {
       document.getElementById("health-boxes").style.display = "none";
       console.error(e);
       setTimeout(() => {
-        window.alert(`Failed to retrieve backend-service data. Please check './config/${env}_config.json' file.`);
+        window.alert(`Failed to retrieve backend-service data. Please check './config/${env}-config.json' file.`);
       }, 100);
     });
   });
