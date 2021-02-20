@@ -55,7 +55,7 @@ app.post("/env/:env", function (req, res) {
       healthCheckEndpoints = require(`./config/${req.params.env}-config.json`)
       break;
     default:
-      healthCheckEndpoints = require("./config/default-config.json");
+      console.error("Selected environment is not supported");
       break;
   }
   res.sendStatus(200);
