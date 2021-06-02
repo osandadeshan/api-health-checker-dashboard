@@ -27,7 +27,7 @@
   <link href="css/style.css" rel="stylesheet">
 </head>
 
-<body>
+<body onload="setSelectedEnvironment('default');sessionStorage.setItem('env', 'default');">
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
@@ -100,13 +100,22 @@
     window['selectedEnv'] = '';
   </script>
   <script>
+    function setDefaultEnv() {
+      fetch('/env/default', {
+        method: 'POST',
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        }
+      });
+    }
     function selectEnv() {
       var element = document.getElementById("envDropdown");
       var environment = element.options[element.selectedIndex].value;
+      sessionStorage.setItem('env', environment);
       setSelectedEnvironment(environment);
     }
   </script>
-  
+
   <!-- Template Main JS File -->
   <script src="js/main.js"></script>
 </body>

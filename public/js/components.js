@@ -19,7 +19,7 @@ readConfig();
 const generateServiceTiles = () => {
   // Looping through the api endpoints and get the status
   services.forEach((service) => {
-    fetch("/" + service.id, {
+    fetch("/health/" + service.id, {
       headers: {
         "Access-Control-Allow-Origin": "*",
       },
