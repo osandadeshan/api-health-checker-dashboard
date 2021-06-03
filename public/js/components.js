@@ -1,10 +1,10 @@
-const serviceCurrentStatus = {};
+let serviceCurrentStatus = {};
 let services = [];
 const pollingInterval = 30;
 
 // Read config.json and create health tiles
-(() => {
-  fetch("/config", ).then(async (response) => {
+const readConfig = () => {
+  fetch("/config").then(async (response) => {
     services = await response.json();
     generateServiceTiles();
     setInterval(generateServiceTiles, pollingInterval * 1000);
@@ -12,14 +12,14 @@ const pollingInterval = 30;
     console.error(e);
     window.alert("Failed to retrieve backend-service data. Please check './config/config.json' file.");
   });
-})();
+}
+
+readConfig();
 
 const generateServiceTiles = () => {
-  const container = document.getElementById("health-boxes");
-
   // Looping through the api endpoints and get the status
   services.forEach((service) => {
-    fetch("/" + service.id, {
+    fetch("/health/" + service.id, {
       headers: {
         "Access-Control-Allow-Origin": "*",
       },
@@ -30,36 +30,63 @@ const generateServiceTiles = () => {
       }
     });
   });
+}
 
-  function appendElements({id, name, description, environment, url, contact}, statusCode) {
-    const elementId = `component_${id}`;
-    const currentElement = document.getElementById(elementId);
+const setSelectedEnvironment = (env) => {
+  setTimeout(() => {
+    console.log("Waiting for selected environment");
+  }, 1000);
+  fetch('/env/' + env, {
+    method: 'POST',
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+    }
+  }).then(function () {
+    fetch("/config").then(async (response) => {
+      services = await response.json();
+      document.getElementById("health-boxes").style.display = "flex";
+      resetAllTiles();
+      generateServiceTiles();
+    }).catch((e) => {
+      document.getElementById("health-boxes").style.display = "none";
+      console.error(e);
+      setTimeout(() => {
+        window.alert(`Failed to retrieve backend-service data. Please check './config/${env}-config.json' file.`);
+      }, 100);
+    });
+  });
+}
 
-    const chipStyle = statusCode !== 200 ? "background-color:#ef5c5c;" : "background-color:#66bb6a;";
-    const chipLabel = statusCode !== 200 ? "Not Available" : "Available";
-    const env = environment.toUpperCase();
+function appendElements({ id, name, description, environment, url, contact }, statusCode) {
+  const container = document.getElementById("health-boxes");
+  const elementId = `component_${id}`;
+  const currentElement = document.getElementById(elementId);
 
-    if (currentElement) {
-      document.getElementById(`chip_${elementId}`).style = chipStyle;
-      document.getElementById(`chip_label_${elementId}`).innerHTML = `${chipLabel}`;
-      document.getElementById(`response_code_${elementId}`).innerHTML = `<b>Response code: ${statusCode}</b>`;
-    } else {
-      const el = document.createElement("div");
-      el.setAttribute("id", elementId);
-      el.classList.add(
-        "col-md-6",
-        "col-lg-3",
-        "d-flex",
-        "align-items-stretch",
-        "mb-5",
-        "mb-lg-0"
-      );
+  const chipStyle = statusCode !== 200 ? "background-color:#ef5c5c;" : "background-color:#66bb6a;";
+  const chipLabel = statusCode !== 200 ? "Not Available" : "Available";
+  const env = environment.toUpperCase();
 
-      el.setAttribute("data-aos", "zoom-in");
-      el.setAttribute("data-aos-delay", "zoom-in200");
+  if (currentElement) {
+    document.getElementById(`chip_${elementId}`).style = chipStyle;
+    document.getElementById(`chip_label_${elementId}`).innerHTML = `${chipLabel}`;
+    document.getElementById(`response_code_${elementId}`).innerHTML = `<b>Response code: ${statusCode}</b>`;
+  } else {
+    const el = document.createElement("div");
+    el.setAttribute("id", elementId);
+    el.classList.add(
+      "col-md-6",
+      "col-lg-3",
+      "d-flex",
+      "align-items-stretch",
+      "mb-5",
+      "mb-lg-0"
+    );
 
-      // Health Tile
-      container.appendChild(el).innerHTML = `
+    el.setAttribute("data-aos", "zoom-in");
+    el.setAttribute("data-aos-delay", "zoom-in200");
+
+    // Health Tile
+    container.appendChild(el).innerHTML = `
       <div class="icon-box" data-toggle="modal" data-target="#modal_${elementId}">
             <div class="d-flex">
               <div class="icon" id="icon_${elementId}">
@@ -74,9 +101,10 @@ const generateServiceTiles = () => {
           <p class="description" id="description_${elementId}">${description}</p>
       </div>
       `;
-      // Modal
-      const p = document.createElement("div");
-      p.innerHTML = `
+      
+    // Modal
+    const p = document.createElement("div");
+    p.innerHTML = `
       <div class="modal fade" id="modal_${elementId}" tabindex="-1" role="dialog" aria-labelledby="modal_${elementId}" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document" style="border-radius:100px!important;">
         <div class="modal-content">
@@ -113,7 +141,12 @@ const generateServiceTiles = () => {
       </div>
     </div>
       `;
-      document.body.insertBefore(p, document.body.firstChild);
-    }
+    document.body.insertBefore(p, document.body.firstChild);
   }
+}
+
+function resetAllTiles() {
+  serviceCurrentStatus = {};
+  const tiles = document.getElementsByClassName('col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0 aos-init aos-animate');
+  Array.from(tiles).forEach(tile => tile.remove());
 }

@@ -1,0 +1,50 @@
+[
+  {
+    "name": "User Management",
+    "description": "This service will be using to view, create, edit, and delete a user.",
+    "id": "user",
+    "environment": "prod",
+    "url": "https://maxsoft-mock-server-demo.web.app/users/1",
+    "contact": "osanda@maxsoft.com"
+  },
+  {
+    "name": "Photos Management",
+    "description": "This service will be using to view, create, edit, and delete a photo.",
+    "id": "photos",
+    "environment": "prod",
+    "url": "https://jsonplaceholder.typicode.com/photos",
+    "contact": "osanda@maxsoft.com"
+  },
+  {
+    "name": "Document Management",
+    "description": "This service will be using for all the document management functions.",
+    "id": "document",
+    "environment": "prod",
+    "url": "https://maxsoft-mock-server-demo.web.app/photos/29647",
+    "contact": "osanda@maxsoft.com"
+  },
+  {
+    "name": "Album Management",
+    "description": "This service will be using for all the album management functions.",
+    "id": "album",
+    "environment": "prod",
+    "url": "https://jsonplaceholder.typicode.com/albums",
+    "contact": "osanda@maxsoft.com"
+  },
+  {
+    "name": "ToDo Management",
+    "description": "This service will be using for all the todo management functions.",
+    "id": "todo",
+    "environment": "prod",
+    "url": "https://jsonplaceholder.typicode.com/todos/1",
+    "contact": "osanda@maxsoft.com"
+  },
+  {
+    "name": "Posts Management",
+    "description": "This service will be using for all the posts management functions.",
+    "id": "posts",
+    "environment": "prod",
+    "url": "https://jsonplaceholder.typicode.com/posts",
+    "contact": "osanda@maxsoft.com"
+  }
+]
