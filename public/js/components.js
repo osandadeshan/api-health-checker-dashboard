@@ -1,13 +1,14 @@
 let serviceCurrentStatus = {};
 let services = [];
 const pollingInterval = 30;
+let pollingIntervalId = null;
 
 // Read config.json and create health tiles
 const readConfig = () => {
   fetch("/config/default").then(async (response) => {
     services = await response.json();
     generateServiceTiles("default");
-    setInterval(generateServiceTiles, pollingInterval * 1000);
+    pollingIntervalId = setInterval(generateServiceTiles, pollingInterval * 1000);
   }).catch((e) => {
     console.error(e);
     window.alert("Failed to retrieve backend-service data. Please check './config/config.json' file.");
