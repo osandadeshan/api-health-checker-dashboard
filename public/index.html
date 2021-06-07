@@ -27,7 +27,7 @@
   <link href="css/style.css" rel="stylesheet">
 </head>
 
-<body onload="setSelectedEnvironment('default');sessionStorage.setItem('env', 'default');">
+<body>
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
@@ -50,10 +50,6 @@
         <select id="envDropdown" onchange="selectEnv()">
           <option value="dev">DEV</option>
           <option value="qa">QA</option>
-          <option value="uat">UAT</option>
-          <option value="sit">SIT</option>
-          <option value="perf">PERF</option>
-          <option value="pre_prod">PRE-PROD</option>
           <option value="prod">PROD</option>
           <option value="default" selected="selected">DEFAULT</option>
         </select>
@@ -111,7 +107,6 @@
     function selectEnv() {
       var element = document.getElementById("envDropdown");
       var environment = element.options[element.selectedIndex].value;
-      sessionStorage.setItem('env', environment);
       setSelectedEnvironment(environment);
     }
   </script>

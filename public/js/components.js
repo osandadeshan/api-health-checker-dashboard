@@ -4,9 +4,9 @@ const pollingInterval = 30;
 
 // Read config.json and create health tiles
 const readConfig = () => {
-  fetch("/config").then(async (response) => {
+  fetch("/config/default").then(async (response) => {
     services = await response.json();
-    generateServiceTiles();
+    generateServiceTiles("default");
     setInterval(generateServiceTiles, pollingInterval * 1000);
   }).catch((e) => {
     console.error(e);
@@ -16,10 +16,10 @@ const readConfig = () => {
 
 readConfig();
 
-const generateServiceTiles = () => {
+const generateServiceTiles = (env) => {
   // Looping through the api endpoints and get the status
   services.forEach((service) => {
-    fetch("/health/" + service.id, {
+    fetch("/health/" + env + "/" + service.id, {
       headers: {
         "Access-Control-Allow-Origin": "*",
       },
@@ -36,28 +36,21 @@ const setSelectedEnvironment = (env) => {
   setTimeout(() => {
     console.log("Waiting for selected environment");
   }, 1000);
-  fetch('/env/' + env, {
-    method: 'POST',
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-    }
-  }).then(function () {
-    fetch("/config").then(async (response) => {
-      services = await response.json();
-      document.getElementById("health-boxes").style.display = "flex";
-      resetAllTiles();
-      generateServiceTiles();
-    }).catch((e) => {
-      document.getElementById("health-boxes").style.display = "none";
-      console.error(e);
-      setTimeout(() => {
-        window.alert(`Failed to retrieve backend-service data. Please check './config/${env}-config.json' file.`);
-      }, 100);
-    });
+  fetch("/config/" + env).then(async (response) => {
+    services = await response.json();
+    document.getElementById("health-boxes").style.display = "flex";
+    resetAllTiles();
+    generateServiceTiles(env);
+  }).catch((e) => {
+    document.getElementById("health-boxes").style.display = "none";
+    console.error(e);
+    setTimeout(() => {
+      window.alert(`Failed to retrieve backend-service data. Please check './config/${env}-config.json' file.`);
+    }, 100);
   });
 }
 
-function appendElements({ id, name, description, environment, url, contact }, statusCode) {
+function appendElements({id, name, description, environment, url, contact}, statusCode) {
   const container = document.getElementById("health-boxes");
   const elementId = `component_${id}`;
   const currentElement = document.getElementById(elementId);
@@ -74,12 +67,12 @@ function appendElements({ id, name, description, environment, url, contact }, st
     const el = document.createElement("div");
     el.setAttribute("id", elementId);
     el.classList.add(
-      "col-md-6",
-      "col-lg-3",
-      "d-flex",
-      "align-items-stretch",
-      "mb-5",
-      "mb-lg-0"
+        "col-md-6",
+        "col-lg-3",
+        "d-flex",
+        "align-items-stretch",
+        "mb-5",
+        "mb-lg-0"
     );
 
     el.setAttribute("data-aos", "zoom-in");
