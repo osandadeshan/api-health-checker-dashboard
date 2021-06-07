@@ -93,7 +93,7 @@
   <script src="js/components.js"></script>
 
   <script>
-    window['selectedEnv'] = '';
+    window['selectedEnv'] = 'default';
   </script>
   <script>
     function setDefaultEnv() {
@@ -107,6 +107,7 @@
     function selectEnv() {
       var element = document.getElementById("envDropdown");
       var environment = element.options[element.selectedIndex].value;
+      window['selectedEnv'] = environment;
       setSelectedEnvironment(environment);
     }
   </script>

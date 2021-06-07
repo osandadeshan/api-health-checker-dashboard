@@ -16,7 +16,8 @@ const readConfig = () => {
 
 readConfig();
 
-const generateServiceTiles = (env) => {
+const generateServiceTiles = () => {
+  const env = window['selectedEnv'];
   // Looping through the api endpoints and get the status
   services.forEach((service) => {
     fetch("/health/" + env + "/" + service.id, {
