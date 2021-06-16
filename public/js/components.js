@@ -107,6 +107,7 @@ function appendElements({id, name, description, environment, url, contact}, stat
           <p class="description" id="description_${elementId}">${description}</p>
       </div>
       `;
+      
     // Modal
     const p = document.createElement("div");
     p.innerHTML = `
