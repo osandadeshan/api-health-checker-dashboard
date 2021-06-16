@@ -19,6 +19,10 @@ readConfig();
 
 const generateServiceTiles = () => {
   const env = window['selectedEnv'];
+  const servicesCount = services.length;
+  let loadedServicesCount = 0;
+
+  document.getElementById('envDropdown').disabled = true;
   // Looping through the api endpoints and get the status
   services.forEach((service) => {
     fetch("/health/" + env + "/" + service.id, {
@@ -30,6 +34,13 @@ const generateServiceTiles = () => {
         appendElements(service, res.status);
         serviceCurrentStatus[service.id] = res.status;
       }
+    }).finally(() => {
+      setTimeout(() => {
+        loadedServicesCount++;
+        if (servicesCount === loadedServicesCount) {
+          document.getElementById('envDropdown').disabled = false;
+        }
+      }, 800);
     });
   });
 }
