@@ -23,6 +23,7 @@ const generateServiceTiles = () => {
   let loadedServicesCount = 0;
 
   document.getElementById('envDropdown').disabled = true;
+  document.getElementById("refresh-indicator").style.display = "inline-block";
   // Looping through the api endpoints and get the status
   services.forEach((service) => {
     fetch("/health/" + env + "/" + service.id, {
@@ -39,6 +40,7 @@ const generateServiceTiles = () => {
         loadedServicesCount++;
         if (servicesCount === loadedServicesCount) {
           document.getElementById('envDropdown').disabled = false;
+          document.getElementById("refresh-indicator").style.display = "none";
         }
       }, 800);
     });
@@ -107,7 +109,7 @@ function appendElements({id, name, description, environment, url, contact}, stat
           <p class="description" id="description_${elementId}">${description}</p>
       </div>
       `;
-      
+
     // Modal
     const p = document.createElement("div");
     p.innerHTML = `
