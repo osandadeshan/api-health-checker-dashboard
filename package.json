@@ -17,7 +17,7 @@
     "axios": "^0.20.0",
     "chalk": "^4.1.1",
     "express": "^4.17.1",
-    "express-session": "^1.17.2",
+    "glob": "^7.1.7",
     "jsonschema": "^1.4.0",
     "log-timestamp": "^0.3.0",
     "node-cache": "^5.1.2"

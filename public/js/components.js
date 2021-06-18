@@ -1,13 +1,14 @@
 let serviceCurrentStatus = {};
 let services = [];
 const pollingInterval = 30;
+let pollingIntervalId = null;
 
 // Read config.json and create health tiles
 const readConfig = () => {
-  fetch("/config").then(async (response) => {
+  fetch("/config/default").then(async (response) => {
     services = await response.json();
-    generateServiceTiles();
-    setInterval(generateServiceTiles, pollingInterval * 1000);
+    generateServiceTiles("default");
+    pollingIntervalId = setInterval(generateServiceTiles, pollingInterval * 1000);
   }).catch((e) => {
     console.error(e);
     window.alert("Failed to retrieve backend-service data. Please check './config/config.json' file.");
@@ -17,9 +18,15 @@ const readConfig = () => {
 readConfig();
 
 const generateServiceTiles = () => {
+  const env = window['selectedEnv'];
+  const servicesCount = services.length;
+  let loadedServicesCount = 0;
+
+  document.getElementById('envDropdown').disabled = true;
+  document.getElementById("refresh-indicator").style.display = "inline-block";
   // Looping through the api endpoints and get the status
   services.forEach((service) => {
-    fetch("/health/" + service.id, {
+    fetch("/health/" + env + "/" + service.id, {
       headers: {
         "Access-Control-Allow-Origin": "*",
       },
@@ -28,6 +35,14 @@ const generateServiceTiles = () => {
         appendElements(service, res.status);
         serviceCurrentStatus[service.id] = res.status;
       }
+    }).finally(() => {
+      setTimeout(() => {
+        loadedServicesCount++;
+        if (servicesCount === loadedServicesCount) {
+          document.getElementById('envDropdown').disabled = false;
+          document.getElementById("refresh-indicator").style.display = "none";
+        }
+      }, 800);
     });
   });
 }
@@ -36,28 +51,21 @@ const setSelectedEnvironment = (env) => {
   setTimeout(() => {
     console.log("Waiting for selected environment");
   }, 1000);
-  fetch('/env/' + env, {
-    method: 'POST',
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-    }
-  }).then(function () {
-    fetch("/config").then(async (response) => {
-      services = await response.json();
-      document.getElementById("health-boxes").style.display = "flex";
-      resetAllTiles();
-      generateServiceTiles();
-    }).catch((e) => {
-      document.getElementById("health-boxes").style.display = "none";
-      console.error(e);
-      setTimeout(() => {
-        window.alert(`Failed to retrieve backend-service data. Please check './config/${env}-config.json' file.`);
-      }, 100);
-    });
+  fetch("/config/" + env).then(async (response) => {
+    services = await response.json();
+    document.getElementById("health-boxes").style.display = "flex";
+    resetAllTiles();
+    generateServiceTiles(env);
+  }).catch((e) => {
+    document.getElementById("health-boxes").style.display = "none";
+    console.error(e);
+    setTimeout(() => {
+      window.alert(`Failed to retrieve backend-service data. Please check './config/${env}-config.json' file.`);
+    }, 100);
   });
 }
 
-function appendElements({ id, name, description, environment, url, contact }, statusCode) {
+function appendElements({id, name, description, environment, url, contact}, statusCode) {
   const container = document.getElementById("health-boxes");
   const elementId = `component_${id}`;
   const currentElement = document.getElementById(elementId);
@@ -74,12 +82,12 @@ function appendElements({ id, name, description, environment, url, contact }, st
     const el = document.createElement("div");
     el.setAttribute("id", elementId);
     el.classList.add(
-      "col-md-6",
-      "col-lg-3",
-      "d-flex",
-      "align-items-stretch",
-      "mb-5",
-      "mb-lg-0"
+        "col-md-6",
+        "col-lg-3",
+        "d-flex",
+        "align-items-stretch",
+        "mb-5",
+        "mb-lg-0"
     );
 
     el.setAttribute("data-aos", "zoom-in");
@@ -101,7 +109,7 @@ function appendElements({ id, name, description, environment, url, contact }, st
           <p class="description" id="description_${elementId}">${description}</p>
       </div>
       `;
-      
+
     // Modal
     const p = document.createElement("div");
     p.innerHTML = `
