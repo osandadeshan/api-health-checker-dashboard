@@ -23,6 +23,7 @@ This project can be used for that purpose.
 | Real-time monitoring | Yes | Minimum interval is 5 minutes |
 | Historical view | Not yet implemented | Yes |
 | Integrating backend services | Only need to update in a single file | Need to create HTTP monitors per service and add it to the dashboard |
+| Managing environments​ | Can maintain multiple environments via multiple json files | Need to create multiple HTTP monitors per each environment and service |
 | Cost | Free and open-source | Paid tool |
 
 ## How to use?
