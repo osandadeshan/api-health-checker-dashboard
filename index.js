@@ -1,7 +1,9 @@
 const express = require("express");
 const path = require("path");
 const axios = require("axios");
-require('log-timestamp');
+require("log-timestamp")(function () {
+  return "[" + new Date().toLocaleString() + "] %s";
+});
 const Validator = require('jsonschema').Validator;
 const NodeCache = require("node-cache");
 const chalk = require('chalk');
@@ -91,13 +93,9 @@ app.get('/stats', function (req, res) {
 // return loaded config environments. use this endpoint to populate config menu in FE if required so we don't have to duplicate env values
 app.get('/environments', function (req, res) {
   res.json(configCache.get('_availableEnvs'));
-})
+});
 
-app.listen(process.env.PORT || 5000, () => {
-  // Application running port is 5000
-  log(chalk.blue.bgRed.bold("API Health Checker running at: http://localhost:5000"));
-
-  // initializing config files in cache
+const loadConfigs = () => {
   glob("config/*.json", null, function (er, files) {
     const availableEnvs = files.map((fileName) => fileName.replace('config/', '')).map((fileName) => fileName.replace('-config.json', ''));
     log(chalk.blue("Available config files: " + availableEnvs));
@@ -112,4 +110,20 @@ app.listen(process.env.PORT || 5000, () => {
     });
     log(chalk.blue.bgRed.bold("Initialized all configurations. Application is ready !!"));
   });
+};
+
+// updates the cache
+app.post('/update', function (req, res) {
+  log(chalk.blue("Update Cache Request"));
+  loadConfigs();
+  res.status(204).end();
+});
+
+
+app.listen(process.env.PORT || 5000, () => {
+  // Application running port is 5000
+  log(chalk.blue.bgRed.bold("API Health Checker running at: http://localhost:5000"));
+
+  // initializing config files in cache
+  loadConfigs();
 });
