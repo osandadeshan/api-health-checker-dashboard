@@ -116,6 +116,8 @@ function appendElements(
       "mb-lg-0"
     );
 
+    el.setAttribute("data-aos", "zoom-in");
+
     // Health Tile
     container.appendChild(el).innerHTML = `
       <div class="icon-box" data-toggle="modal" data-target="#modal_${elementId}">
