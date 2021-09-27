@@ -5,24 +5,31 @@ let pollingIntervalId = null;
 
 // Read config.json and create health tiles
 const readConfig = () => {
-  fetch("/config/default").then(async (response) => {
-    services = await response.json();
-    generateServiceTiles("default");
-    pollingIntervalId = setInterval(generateServiceTiles, pollingInterval * 1000);
-  }).catch((e) => {
-    console.error(e);
-    window.alert("Failed to retrieve backend-service data. Please check './config/config.json' file.");
-  });
-}
+  fetch("/config/default")
+    .then(async (response) => {
+      services = await response.json();
+      generateServiceTiles("default");
+      pollingIntervalId = setInterval(
+        generateServiceTiles,
+        pollingInterval * 1000
+      );
+    })
+    .catch((e) => {
+      console.error(e);
+      window.alert(
+        "Failed to retrieve backend-service data. Please check './config/config.json' file."
+      );
+    });
+};
 
 readConfig();
 
 const generateServiceTiles = () => {
-  const env = window['selectedEnv'];
+  const env = window["selectedEnv"];
   const servicesCount = services.length;
   let loadedServicesCount = 0;
 
-  document.getElementById('envDropdown').disabled = true;
+  document.getElementById("envDropdown").disabled = true;
   document.getElementById("refresh-indicator").style.display = "inline-block";
   // Looping through the api endpoints and get the status
   services.forEach((service) => {
@@ -30,68 +37,86 @@ const generateServiceTiles = () => {
       headers: {
         "Access-Control-Allow-Origin": "*",
       },
-    }).then((res) => {
-      if (!serviceCurrentStatus[service.id] || serviceCurrentStatus[service.id] !== res.status) {
-        appendElements(service, res.status);
-        serviceCurrentStatus[service.id] = res.status;
-      }
-    }).finally(() => {
-      setTimeout(() => {
-        loadedServicesCount++;
-        if (servicesCount === loadedServicesCount) {
-          document.getElementById('envDropdown').disabled = false;
-          document.getElementById("refresh-indicator").style.display = "none";
+    })
+      .then((res) => {
+        if (
+          !serviceCurrentStatus[service.id] ||
+          serviceCurrentStatus[service.id] !== res.status
+        ) {
+          appendElements(service, res.status);
+          serviceCurrentStatus[service.id] = res.status;
         }
-      }, 800);
-    });
+      })
+      .finally(() => {
+        setTimeout(() => {
+          loadedServicesCount++;
+          if (servicesCount === loadedServicesCount) {
+            document.getElementById("envDropdown").disabled = false;
+            document.getElementById("refresh-indicator").style.display = "none";
+          }
+        }, 800);
+      });
   });
-}
+};
 
 const setSelectedEnvironment = (env) => {
   setTimeout(() => {
     console.log("Waiting for selected environment");
   }, 1000);
-  fetch("/config/" + env).then(async (response) => {
-    services = await response.json();
-    document.getElementById("health-boxes").style.display = "flex";
-    resetAllTiles();
-    generateServiceTiles(env);
-  }).catch((e) => {
-    document.getElementById("health-boxes").style.display = "none";
-    console.error(e);
-    setTimeout(() => {
-      window.alert(`Failed to retrieve backend-service data. Please check './config/${env}-config.json' file.`);
-    }, 100);
-  });
-}
+  fetch("/config/" + env)
+    .then(async (response) => {
+      services = await response.json();
+      document.getElementById("health-boxes").style.display = "flex";
+      resetAllTiles();
+      generateServiceTiles(env);
+    })
+    .catch((e) => {
+      document.getElementById("health-boxes").style.display = "none";
+      console.error(e);
+      setTimeout(() => {
+        window.alert(
+          `Failed to retrieve backend-service data. Please check './config/${env}-config.json' file.`
+        );
+      }, 100);
+    });
+};
 
-function appendElements({id, name, description, environment, url, contact}, statusCode) {
+function appendElements(
+  { id, name, description, environment, url, contact },
+  statusCode
+) {
   const container = document.getElementById("health-boxes");
   const elementId = `component_${id}`;
   const currentElement = document.getElementById(elementId);
 
-  const chipStyle = statusCode !== 200 ? "background-color:#ef5c5c;" : "background-color:#66bb6a;";
+  const chipStyle =
+    statusCode !== 200
+      ? "background-color:#ef5c5c;"
+      : "background-color:#66bb6a;";
   const chipLabel = statusCode !== 200 ? "Not Available" : "Available";
   const env = environment.toUpperCase();
 
   if (currentElement) {
     document.getElementById(`chip_${elementId}`).style = chipStyle;
-    document.getElementById(`chip_label_${elementId}`).innerHTML = `${chipLabel}`;
-    document.getElementById(`response_code_${elementId}`).innerHTML = `<b>Response code: ${statusCode}</b>`;
+    document.getElementById(
+      `chip_label_${elementId}`
+    ).innerHTML = `${chipLabel}`;
+    document.getElementById(
+      `response_code_${elementId}`
+    ).innerHTML = `<b>Response code: ${statusCode}</b>`;
   } else {
     const el = document.createElement("div");
     el.setAttribute("id", elementId);
     el.classList.add(
-        "col-md-6",
-        "col-lg-3",
-        "d-flex",
-        "align-items-stretch",
-        "mb-5",
-        "mb-lg-0"
+      "col-md-6",
+      "col-lg-3",
+      "d-flex",
+      "align-items-stretch",
+      "mb-5",
+      "mb-lg-0"
     );
 
     el.setAttribute("data-aos", "zoom-in");
-    el.setAttribute("data-aos-delay", "zoom-in200");
 
     // Health Tile
     container.appendChild(el).innerHTML = `
@@ -155,6 +180,8 @@ function appendElements({id, name, description, environment, url, contact}, stat
 
 function resetAllTiles() {
   serviceCurrentStatus = {};
-  const tiles = document.getElementsByClassName('col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0 aos-init aos-animate');
-  Array.from(tiles).forEach(tile => tile.remove());
+  const tiles = document.getElementsByClassName(
+    "col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0 "
+  );
+  Array.from(tiles).forEach((tile) => tile.remove());
 }
