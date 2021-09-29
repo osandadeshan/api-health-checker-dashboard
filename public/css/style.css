@@ -2,17 +2,17 @@
 # General
 --------------------------------------------------------------*/
 body {
-  font-family: "Open Sans", sans-serif;
-  color: #444444;
+    font-family: "Open Sans", sans-serif;
+    color: #444444;
 }
 
 a {
-  color: #2487ce;
+    color: #2487ce;
 }
 
 a:hover {
-  color: #469fdf;
-  text-decoration: none;
+    color: #469fdf;
+    text-decoration: none;
 }
 
 h1,
@@ -21,318 +21,318 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Raleway", sans-serif;
+    font-family: "Raleway", sans-serif;
 }
 
 /*--------------------------------------------------------------
 # Back to top button
 --------------------------------------------------------------*/
 .back-to-top {
-  position: fixed;
-  display: none;
-  right: 15px;
-  bottom: 15px;
-  z-index: 99999;
+    position: fixed;
+    display: none;
+    right: 15px;
+    bottom: 15px;
+    z-index: 99999;
 }
 
 .back-to-top i {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  width: 40px;
-  height: 40px;
-  border-radius: 4px;
-  background: #2487ce;
-  color: #fff;
-  transition: all 0.4s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    background: #2487ce;
+    color: #fff;
+    transition: all 0.4s;
 }
 
 .back-to-top i:hover {
-  background: #3e9bdd;
-  color: #fff;
+    background: #3e9bdd;
+    color: #fff;
 }
 
 /*--------------------------------------------------------------
 # Preloader
 --------------------------------------------------------------*/
 #preloader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 9999;
-  overflow: hidden;
-  background: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    overflow: hidden;
+    background: #fff;
 }
 
 #preloader:before {
-  content: "";
-  position: fixed;
-  top: calc(50% - 30px);
-  left: calc(50% - 30px);
-  border: 6px solid #2487ce;
-  border-top-color: #fff;
-  border-bottom-color: #fff;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  -webkit-animation: animate-preloader 1s linear infinite;
-  animation: animate-preloader 1s linear infinite;
+    content: "";
+    position: fixed;
+    top: calc(50% - 30px);
+    left: calc(50% - 30px);
+    border: 6px solid #2487ce;
+    border-top-color: #fff;
+    border-bottom-color: #fff;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    -webkit-animation: animate-preloader 1s linear infinite;
+    animation: animate-preloader 1s linear infinite;
 }
 
 @-webkit-keyframes animate-preloader {
-  0% {
-    transform: rotate(0deg);
-  }
+    0% {
+        transform: rotate(0deg);
+    }
 
-  100% {
-    transform: rotate(360deg);
-  }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 @keyframes animate-preloader {
-  0% {
-    transform: rotate(0deg);
-  }
+    0% {
+        transform: rotate(0deg);
+    }
 
-  100% {
-    transform: rotate(360deg);
-  }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 /*--------------------------------------------------------------
 # Disable aos animation delay on mobile devices
 --------------------------------------------------------------*/
 @media screen and (max-width: 768px) {
-  [data-aos-delay] {
-    transition-delay: 0 !important;
-  }
+    [data-aos-delay] {
+        transition-delay: 0 !important;
+    }
 }
 
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
 #header {
-  transition: all 0.5s;
-  background: #fff;
-  z-index: 997;
-  padding: 15px 0;
-  border-bottom: 1px solid #e6f2fb;
+    transition: all 0.5s;
+    background: #fff;
+    z-index: 997;
+    padding: 15px 0;
+    border-bottom: 1px solid #e6f2fb;
 }
 
 #header.header-scrolled {
-  border-color: #fff;
-  box-shadow: 0px 2px 15px rgba(18, 66, 101, 0.08);
+    border-color: #fff;
+    box-shadow: 0px 2px 15px rgba(18, 66, 101, 0.08);
 }
 
 #header .logo {
-  font-size: 28px;
-  margin: 0;
-  padding: 0;
-  line-height: 1;
-  font-weight: 300;
-  letter-spacing: 0.5px;
-  font-family: "Poppins", sans-serif;
+    font-size: 28px;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    font-family: "Poppins", sans-serif;
 }
 
 #header .logo a {
-  color: #16507b;
+    color: #16507b;
 }
 
 #header .logo img {
-  max-height: 40px;
+    max-height: 40px;
 }
 
 @media (max-width: 992px) {
-  #header .logo {
-    font-size: 28px;
-  }
+    #header .logo {
+        font-size: 28px;
+    }
 }
 
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
 #hero {
-  width: 100%;
-  min-height: 100vh;
-  position: relative;
-  background: url("../img/hero-bg.jpg") top center;
-  background-size: cover;
-  position: relative;
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    background: url("../img/hero-bg.jpg") top center;
+    background-size: cover;
+    position: relative;
 }
 
 #hero:before {
-  content: "";
-  background: rgba(255, 255, 255, 0.8);
-  position: absolute;
-  bottom: 0;
-  top: 0;
-  left: 0;
-  right: 0;
+    content: "";
+    background: rgba(255, 255, 255, 0.8);
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
 }
 
 #hero .container {
-  padding-top: 80px;
+    padding-top: 80px;
 }
 
 #hero h1 {
-  margin: 0;
-  font-size: 56px;
-  font-weight: 700;
-  line-height: 72px;
-  color: #124265;
-  font-family: "Poppins", sans-serif;
+    margin: 0;
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 72px;
+    color: #124265;
+    font-family: "Poppins", sans-serif;
 }
 
 #hero h2 {
-  color: #5e5e5e;
-  margin: 10px 0 0 0;
-  font-size: 22px;
+    color: #5e5e5e;
+    margin: 10px 0 0 0;
+    font-size: 22px;
 }
 
 #hero .icon-boxes {
-  margin-top: 100px;
+    margin-top: 100px;
 }
 
 #hero .icon-box {
-  padding: 20px 30px 50px 30px;
-  position: relative;
-  overflow: hidden;
-  background: #fff;
-  box-shadow: 0 0 29px 0 rgba(18, 66, 101, 0.08);
-  transition: all 0.3s ease-in-out;
-  border-radius: 8px;
-  z-index: 1;
-  margin-bottom: 15px;
+    padding: 20px 30px 50px 30px;
+    position: relative;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 0 29px 0 rgba(18, 66, 101, 0.08);
+    transition: all 0.3s ease-in-out;
+    border-radius: 8px;
+    z-index: 1;
+    margin-bottom: 15px;
 }
 
 #hero .icon-box .chip {
-  display: flex;
-  /*background: #ef5c5c;*/
-  align-items: center;
-  justify-content: center;
-  padding: 10px 10px;
-  border-radius: 20px;
-  width: 100px;
-  height: 30px;
-  margin-top: 10px;
+    display: flex;
+    /*background: #ef5c5c;*/
+    align-items: center;
+    justify-content: center;
+    padding: 10px 10px;
+    border-radius: 20px;
+    width: 100px;
+    height: 30px;
+    margin-top: 10px;
 }
 
 #hero .icon-box .chip label {
-  color: #fafafa;
-  font-size: 12px;
-  margin: 0;
+    color: #fafafa;
+    font-size: 12px;
+    margin: 0;
 }
 
 #hero .icon-box .title {
-  font-weight: 700;
-  margin-bottom: 15px;
-  font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    font-size: 18px;
 }
 
 #hero .icon-box .title a {
-  color: #124265;
-  transition: 0.3s;
+    color: #124265;
+    transition: 0.3s;
 }
 
 #hero .icon-box .description {
-  font-size: 15px;
-  line-height: 28px;
-  margin-bottom: 0;
+    font-size: 15px;
+    line-height: 28px;
+    margin-bottom: 0;
 }
 
 #hero .icon-box .icon {
-  margin-bottom: 20px;
-  padding-top: 10px;
-  display: inline-block;
-  transition: all 0.3s ease-in-out;
-  font-size: 36px;
-  line-height: 1;
-  color: #2487ce;
-  flex: 1;
+    margin-bottom: 20px;
+    padding-top: 10px;
+    display: inline-block;
+    transition: all 0.3s ease-in-out;
+    font-size: 36px;
+    line-height: 1;
+    color: #2487ce;
+    flex: 1;
 }
 
 #hero .icon-box:hover {
-  transform: scale(1.08);
+    transform: scale(1.08);
 }
 
 #hero .icon-box:hover .title a {
-  color: #2487ce;
+    color: #2487ce;
 }
 
 @media (min-width: 1024px) {
-  #hero {
-    background-attachment: fixed;
-  }
+    #hero {
+        background-attachment: fixed;
+    }
 }
 
 @media (max-width: 992px), (max-height: 500) {
-  #hero {
-    height: auto;
-  }
+    #hero {
+        height: auto;
+    }
 
-  #hero h1 {
-    font-size: 28px;
-    line-height: 36px;
-  }
+    #hero h1 {
+        font-size: 28px;
+        line-height: 36px;
+    }
 
-  #hero h2 {
-    font-size: 18px;
-    line-height: 24px;
-  }
+    #hero h2 {
+        font-size: 18px;
+        line-height: 24px;
+    }
 }
 
 /*--------------------------------------------------------------
 # Sections General
 --------------------------------------------------------------*/
 section {
-  padding: 80px 0;
+    padding: 80px 0;
 }
 
 .section-bg {
-  background-color: #f8fbfe;
+    background-color: #f8fbfe;
 }
 
 .section-title {
-  text-align: center;
-  padding-bottom: 30px;
+    text-align: center;
+    padding-bottom: 30px;
 }
 
 .section-title h2 {
-  font-size: 32px;
-  font-weight: bold;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-  padding-bottom: 0;
-  color: #124265;
+    font-size: 32px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    padding-bottom: 0;
+    color: #124265;
 }
 
 .section-title p {
-  margin-bottom: 0;
-  font-size: 14px;
-  color: #919191;
+    margin-bottom: 0;
+    font-size: 14px;
+    color: #919191;
 }
 
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
 #footer {
-  background: #f8fbfe;
-  padding: 30px 0;
-  color: #222222;
-  font-size: 14px;
-  text-align: center;
+    background: #f8fbfe;
+    padding: 30px 0;
+    color: #222222;
+    font-size: 14px;
+    text-align: center;
 }
 
 #footer .credits {
-  padding-top: 5px;
-  font-size: 13px;
+    padding-top: 5px;
+    font-size: 13px;
 }
 
 #footer .credits a {
-  color: #629bd4;
+    color: #629bd4;
 }
 
 /*--------------------------------------------------------------
@@ -340,58 +340,66 @@ section {
 --------------------------------------------------------------*/
 
 .select {
-  margin-top: 30px;
-  position: relative;
-  min-width: 200px;
+    margin-top: 30px;
+    position: relative;
+    min-width: 200px;
 }
+
 .select svg {
-  position: absolute;
-  right: 12px;
-  top: calc(50% - 3px);
-  width: 10px;
-  height: 6px;
-  stroke-width: 2px;
-  stroke: #9098a9;
-  fill: none;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  pointer-events: none;
+    position: absolute;
+    right: 12px;
+    top: calc(50% - 3px);
+    width: 10px;
+    height: 6px;
+    stroke-width: 2px;
+    stroke: #9098a9;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    pointer-events: none;
 }
+
 .select select {
-  -webkit-appearance: none;
-  padding: 7px 40px 7px 12px;
-  width: 100%;
-  border: 1px solid #e8eaed;
-  border-radius: 5px;
-  background: #fff;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    -webkit-appearance: none;
+    padding: 7px 40px 7px 12px;
+    width: 100%;
+    border: 1px solid #e8eaed;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-  cursor: pointer;
-  font-family: inherit;
-  font-size: 16px;
-  transition: all 150ms ease;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 16px;
+    transition: all 150ms ease;
 }
+
 .select select:required:invalid {
-  color: #5a667f;
+    color: #5a667f;
 }
+
 .select select option {
-  color: #223254;
+    color: #223254;
 }
+
 .select select option[value=""][disabled] {
-  display: none;
+    display: none;
 }
+
 .select select:focus {
-  outline: none;
-  border-color: #07f;
-  box-shadow: 0 0 0 2px rgba(0, 119, 255, 0.2);
+    outline: none;
+    border-color: #07f;
+    box-shadow: 0 0 0 2px rgba(0, 119, 255, 0.2);
 }
+
 .select select:hover + svg {
-  stroke: #07f;
+    stroke: #07f;
 }
+
 .sprites {
-  position: absolute;
-  width: 0;
-  height: 0;
-  pointer-events: none;
-  user-select: none;
+    position: absolute;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    user-select: none;
 }

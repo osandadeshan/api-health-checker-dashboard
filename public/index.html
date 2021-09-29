@@ -1,147 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
     <title>API Health Checker</title>
-    <meta content="" name="descriptison" />
-    <meta content="" name="keywords" />
-    <link rel="icon" type="image/png" href="img/favicon.png" />
+    <meta content="" name="descriptison"/>
+    <meta content="" name="keywords"/>
+    <link href="img/favicon.png" rel="icon" type="image/png"/>
     <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"/>
 
     <!-- Vendor CSS Files -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="vendor/icofont/icofont.min.css" rel="stylesheet" />
-    <link href="vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
-    <link href="vendor/remixicon/remixicon.css" rel="stylesheet" />
-    <link href="vendor/venobox/venobox.css" rel="stylesheet" />
-    <link
-      href="vendor/owl.carousel/assets/owl.carousel.min.css"
-      rel="stylesheet"
-    />
-    <link href="vendor/aos/aos.css" rel="stylesheet" />
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="vendor/icofont/icofont.min.css" rel="stylesheet"/>
+    <link href="vendor/boxicons/css/boxicons.min.css" rel="stylesheet"/>
+    <link href="vendor/remixicon/remixicon.css" rel="stylesheet"/>
+    <link href="vendor/venobox/venobox.css" rel="stylesheet"/>
+    <link href="vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet"/>
+    <link href="vendor/aos/aos.css" rel="stylesheet"/>
 
     <!-- Template Main CSS File -->
-    <link href="css/style.css" rel="stylesheet" />
-  </head>
+    <link href="css/style.css" rel="stylesheet"/>
+</head>
 
-  <body>
-    <!-- ======= Header ======= -->
-    <header id="header" class="fixed-top">
-      <div class="container d-flex align-items-center">
+<body>
+<!-- ======= Header ======= -->
+<header class="fixed-top" id="header">
+    <div class="container d-flex align-items-center">
         <h1 class="logo mr-auto">
-          <a href="index.html">API Health Checker</a>
+            <a href="index.html">API Health Checker</a>
         </h1>
-      </div>
-    </header>
-    <!-- End Header -->
+    </div>
+</header>
+<!-- End Header -->
 
-    <main>
-      <!-- ======= Project Service Components Section ======= -->
-      <section id="hero" class="d-flex align-items-center">
-        <div
-          class="container position-relative"
-          data-aos="fade-up"
-          data-aos-delay="100"
-        >
-          <div class="row justify-content-center">
-            <div class="col-xl-7 col-lg-9 text-center">
-              <h1>API Health Checker</h1>
-              <h2>
-                Real time health check dashboard for your backend services.
-              </h2>
+<main>
+    <!-- ======= Project Service Components Section ======= -->
+    <section class="d-flex align-items-center" id="hero">
+        <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+            <div class="row justify-content-center">
+                <div class="col-xl-7 col-lg-9 text-center">
+                    <h1>API Health Checker</h1>
+                    <h2>
+                        Real time health check dashboard for your backend services.
+                    </h2>
+                </div>
             </div>
-          </div>
 
-          <label class="select" for="slct">
-            <select id="envDropdown" required="required" onchange="selectEnv()">
-              <option value="dev">DEV</option>
-              <option value="qa">QA</option>
-              <option value="prod">PROD</option>
-              <option value="default" selected="selected">DEFAULT</option>
-            </select>
-            <svg>
-              <use xlink:href="#select-arrow-down"></use>
+            <label class="select" for="slct">
+                <select id="envDropdown" onchange="selectEnv()" required="required">
+                    <option value="dev">DEV</option>
+                    <option value="qa">QA</option>
+                    <option value="prod">PROD</option>
+                    <option selected="selected" value="default">DEFAULT</option>
+                </select>
+                <svg>
+                    <use xlink:href="#select-arrow-down"></use>
+                </svg>
+            </label>
+            <!-- SVG Sprites-->
+            <svg class="sprites">
+                <symbol id="select-arrow-down" viewbox="0 0 10 6">
+                    <polyline points="1 1 5 5 9 1"></polyline>
+                </symbol>
             </svg>
-          </label>
-          <!-- SVG Sprites-->
-          <svg class="sprites">
-            <symbol id="select-arrow-down" viewbox="0 0 10 6">
-              <polyline points="1 1 5 5 9 1"></polyline>
-            </symbol>
-          </svg>
 
-          <div id="health-boxes" class="row icon-boxes"></div>
+            <div class="row icon-boxes" id="health-boxes"></div>
         </div>
-      </section>
-      <!-- End Project Service Components Section -->
-    </main>
-    <!-- End #main -->
+    </section>
+    <!-- End Project Service Components Section -->
+</main>
+<!-- End #main -->
 
-    <!-- ======= Footer ======= -->
-    <footer id="footer">
-      <div class="container">
+<!-- ======= Footer ======= -->
+<footer id="footer">
+    <div class="container">
         <div class="copyright">
-          &copy; Copyright
-          <span
+            &copy; Copyright
+            <span
             ><a href="https://maxsoftlk.github.io/" target="_blank"
-              ><strong>MaxSoft</strong></a
+            ><strong>MaxSoft</strong></a
             ></span
-          >. All Rights Reserved.
+            >. All Rights Reserved.
         </div>
         <div class="credits">
-          Designed by
-          <a href="https://osandadeshan.github.com/" target="_blank"
+            Designed by
+            <a href="https://osandadeshan.github.com/" target="_blank"
             >Osanda Deshan Nimalarathna</a
-          >.
+            >.
         </div>
-      </div>
-    </footer>
-    <!-- End  Footer -->
+    </div>
+</footer>
+<!-- End  Footer -->
 
-    <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
-    <div id="preloader"></div>
+<a class="back-to-top" href="#"><i class="ri-arrow-up-line"></i></a>
+<div id="preloader"></div>
 
-    <!-- Vendor JS Files -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="vendor/jquery.easing/jquery.easing.min.js"></script>
-    <script src="vendor/php-email-form/validate.js"></script>
-    <script src="vendor/waypoints/jquery.waypoints.min.js"></script>
-    <script src="vendor/counterup/counterup.min.js"></script>
-    <script src="vendor/venobox/venobox.min.js"></script>
-    <script src="vendor/owl.carousel/owl.carousel.min.js"></script>
-    <script src="vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="vendor/aos/aos.js"></script>
+<!-- Vendor JS Files -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="vendor/jquery.easing/jquery.easing.min.js"></script>
+<script src="vendor/php-email-form/validate.js"></script>
+<script src="vendor/waypoints/jquery.waypoints.min.js"></script>
+<script src="vendor/counterup/counterup.min.js"></script>
+<script src="vendor/venobox/venobox.min.js"></script>
+<script src="vendor/owl.carousel/owl.carousel.min.js"></script>
+<script src="vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="vendor/aos/aos.js"></script>
 
-    <script src="js/components.js"></script>
+<script src="js/components.js"></script>
 
-    <script>
-      window["selectedEnv"] = "default";
-    </script>
-    <script>
-      function setDefaultEnv() {
+<script>
+    window["selectedEnv"] = "default";
+</script>
+<script>
+    function setDefaultEnv() {
         fetch("/env/default", {
-          method: "POST",
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-          },
+            method: "POST",
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+            },
         });
-      }
-      function selectEnv() {
+    }
+
+    function selectEnv() {
         var element = document.getElementById("envDropdown");
         var environment = element.options[element.selectedIndex].value;
         window["selectedEnv"] = environment;
         setSelectedEnvironment(environment);
-      }
-    </script>
+    }
+</script>
 
-    <!-- Template Main JS File -->
-    <script src="js/main.js"></script>
-  </body>
+<!-- Template Main JS File -->
+<script src="js/main.js"></script>
+</body>
 </html>
