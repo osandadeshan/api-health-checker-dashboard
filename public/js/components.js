@@ -91,6 +91,10 @@ function appendElements(
     statusCode !== 200
       ? "background-color:#ef5c5c;"
       : "background-color:#66bb6a;";
+  const borderStyle =
+    statusCode !== 200
+      ? "box-shadow: rgba(255, 0, 0, 0.9) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;"
+      : "box-shadow: rgba(127,255,0, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;";
   const chipLabel = statusCode !== 200 ? "Not Available" : "Available";
   const env = environment.toUpperCase();
 
@@ -118,7 +122,7 @@ function appendElements(
 
     // Health Tile
     container.appendChild(el).innerHTML = `
-      <div class="icon-box" data-toggle="modal" data-target="#modal_${elementId}">
+      <div class="icon-box" style="${borderStyle}" data-toggle="modal" data-target="#modal_${elementId}">
             <div class="d-flex">
               <div class="icon" id="icon_${elementId}">
               <i class="ri-stack-line"></i>
@@ -152,7 +156,7 @@ function appendElements(
           <tbody class="table table-borderless">
               <tr>
                   <td>Health URL</td>
-                  <td style="overflow-wrap:break-word; word-wrap:break-word; word-break:break-all;">${url}</td>
+                  <td style="overflow-wrap:break-word; word-wrap:break-word; word-break:break-all;"><a href="${url}" target="_blank">${url}</a></td>
               </tr>
               <tr>
                   <td>Environment</td>

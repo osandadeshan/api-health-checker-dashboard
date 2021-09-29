@@ -340,6 +340,7 @@ section {
 --------------------------------------------------------------*/
 
 .select {
+  margin-top: 30px;
   position: relative;
   min-width: 200px;
 }
