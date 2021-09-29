@@ -125,7 +125,7 @@ function appendElements(
       <div class="icon-box" style="${borderStyle}" data-toggle="modal" data-target="#modal_${elementId}">
             <div class="d-flex">
               <div class="icon" id="icon_${elementId}">
-              <i class="ri-stack-line"></i>
+              <i class="ri-server-fill"></i>
             </div>
             <div class="chip" id="chip_${elementId}" style="${chipStyle}">
               <label id="chip_label_${elementId}">${chipLabel}</label>
