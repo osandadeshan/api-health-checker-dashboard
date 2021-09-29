@@ -93,8 +93,8 @@ function appendElements(
       : "background-color:#66bb6a;";
   const borderStyle =
     statusCode !== 200
-      ? "box-shadow: rgba(255, 0, 0, 0.9) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;"
-      : "box-shadow: rgba(127,255,0, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;";
+      ? "box-shadow: rgba(255, 0, 0, 0.9) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px; cursor:pointer;"
+      : "box-shadow: rgba(127,255,0, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px; cursor:pointer;";
   const chipLabel = statusCode !== 200 ? "Not Available" : "Available";
   const env = environment.toUpperCase();
 
