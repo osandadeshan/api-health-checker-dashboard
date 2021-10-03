@@ -4,7 +4,7 @@
 When we are working on a real project, it is vital to have a dashboard where we can find the availability of the backend services integrated with that project.
 This solution can be used for that purpose.
 
-![](https://user-images.githubusercontent.com/9147189/135311956-2b0e8aa1-598e-4c3d-87b3-4278c17850d3.png)
+![](https://user-images.githubusercontent.com/9147189/135744310-59450e53-468e-4881-92b4-ba098153760d.png)
 
 ## Advantages
 * Easy to find unavailable backend services
