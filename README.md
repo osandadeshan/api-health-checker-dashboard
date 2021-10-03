@@ -4,7 +4,8 @@
 When we are working on a real project, it is vital to have a dashboard where we can find the availability of the backend services integrated with that project.
 This solution can be used for that purpose.
 
-![](https://user-images.githubusercontent.com/9147189/135744310-59450e53-468e-4881-92b4-ba098153760d.png)
+> Demo App
+![](https://user-images.githubusercontent.com/9147189/135744321-a4f58864-7331-4097-b83c-43edb2940d5a.png)
 
 ## Advantages
 * Easy to find unavailable backend services
@@ -16,6 +17,7 @@ This solution can be used for that purpose.
 * Free and open-source
 
 ## Architecture
+> Architecture
 ![](https://user-images.githubusercontent.com/9147189/135319309-3a8eda05-dc29-4df0-be03-5b921b17a822.PNG)
 
 ## API Health Checker Dashboard Vs Dynatrace Dashboard
