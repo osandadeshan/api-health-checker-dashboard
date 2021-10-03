@@ -50,10 +50,12 @@
 
             <label class="select" for="slct">
                 <select id="envDropdown" onchange="selectEnv()" required="required">
+                    <option selected="selected" value="default">DEFAULT</option>
                     <option value="dev">DEV</option>
                     <option value="qa">QA</option>
+                    <option value="uat">UAT</option>
+                    <option value="preprod">PRE-PROD</option>
                     <option value="prod">PROD</option>
-                    <option selected="selected" value="default">DEFAULT</option>
                 </select>
                 <svg>
                     <use xlink:href="#select-arrow-down"></use>

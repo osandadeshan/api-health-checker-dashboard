@@ -1,34 +1,10 @@
 [
   {
-    "name": "Authentication Service",
-    "description": "This service will be using to get authentication token.",
-    "id": "auth",
-    "environment": "prod",
-    "url": "https://intelliapi-mockserver.herokuapp.com/auth",
-    "contact": "osanda@maxsoft.com"
-  },
-  {
-    "name": "User Service",
-    "description": "This service will be using to view, create, edit, and delete a user.",
-    "id": "user",
-    "environment": "prod",
-    "url": "https://maxsoft-mock-server-demo.web.app/users/1",
-    "contact": "osanda@maxsoft.com"
-  },
-  {
     "name": "Multimedia Service",
     "description": "This service will be using to view, create, edit, and delete a photo.",
     "id": "multimedia",
     "environment": "uat",
     "url": "https://jsonplaceholder.typicode.com/photos",
-    "contact": "osanda@maxsoft.com"
-  },
-  {
-    "name": "Currency Service",
-    "description": "This service will be using for all the career management functions.",
-    "id": "career",
-    "environment": "prod",
-    "url": "https://api.coindesk.com/v1/bpi/currentprice.json",
     "contact": "osanda@maxsoft.com"
   },
   {
@@ -45,14 +21,6 @@
     "id": "album",
     "environment": "uat",
     "url": "https://jsonplaceholder.typicode.com/albums",
-    "contact": "osanda@maxsoft.com"
-  },
-  {
-    "name": "Barcode Service",
-    "description": "This service will be using for all the barcode management functions.",
-    "id": "barcode",
-    "environment": "prod",
-    "url": "https://maxsoft-mock-server-demo.com/barcode",
     "contact": "osanda@maxsoft.com"
   },
   {
