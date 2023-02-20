@@ -55,4 +55,4 @@ You can deploy this as a sample node application.
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/License_icon-mit-2.svg/2000px-License_icon-mit-2.svg.png" alt="MIT License" width="100" height="100"/> [API Health Checker Dashboard](https://medium.com/api-health-checker) is released under [MIT License](https://opensource.org/licenses/MIT)
 
 ## Copyright
-Copyright 2021 [MaxSoft](https://maxsoftlk.github.io/).
+Copyright 2022 [MaxSoft](https://maxsoftlk.github.io/).
